@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: birthday-bot-deployment
+  labels:
+    app: birthday-bot
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: birthday-bot
+  template:
+    metadata:
+      labels:
+        app: birthday-bot
+    spec:
+      containers:
+      - name: birthday-bot
+        image: ghcr.io/do-community/birthday-bot:main
+        ports:
+        - containerPort: 8080
+        resources:
+          requests:
+            cpu: "100m"
+            memory: "128Mi"
+          limits:
+            cpu: "250m"
+            memory: "256Mi"

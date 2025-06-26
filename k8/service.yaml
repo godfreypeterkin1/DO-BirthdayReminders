@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: birthday-bot-service
+  labels:
+    app: birthday-bot
+spec:
+  type: LoadBalancer
+  selector:
+    app: birthday-bot
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8080
